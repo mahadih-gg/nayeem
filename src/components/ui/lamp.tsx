@@ -2,13 +2,14 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/utils/cn";
+import Image from "next/image";
 
 export function LampDemo() {
   return (
     <LampContainer>
       <motion.h1
-        initial={{ opacity: 0.5, y: 100 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0.0, y: -200 }}
+        whileInView={{ opacity: 1, y: -50 }}
         transition={{
           delay: 0.3,
           duration: 0.8,
@@ -32,10 +33,21 @@ export const LampContainer = ({
   return (
     <div
       className={cn(
-        "relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-slate-950 w-full rounded-md z-0",
+        "relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-slate-950 w-full z-0",
         className
       )}
     >
+      <motion.div
+        initial={{ opacity: 0.0, y: -200, zIndex: -10 }}
+        whileInView={{ opacity: 1, y: -50 }}
+        transition={{
+          delay: 0.3,
+          duration: 0.8,
+          ease: "easeInOut",
+        }}
+      >
+        <Image src="/assets/profile.png" width={300} height={400} alt="Profile" />
+      </motion.div>
       <div className="relative flex w-full flex-1 scale-y-125 items-center justify-center isolate z-0 ">
         <motion.div
           initial={{ opacity: 0.5, width: "15rem" }}
